@@ -10,7 +10,7 @@ class CandidateViewSet(ModelViewSet):
     serializer_class = CandidateSerializer
     permission_classes=[IsAuthenticated, ]
 
-
+    @action(methods=['put', 'patch', ], detail=True)
     def vote(self, request, *args, **kwargs):
         candidate = self.get_object()
         candidate.point+=1
